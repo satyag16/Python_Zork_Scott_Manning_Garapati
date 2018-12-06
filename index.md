@@ -1,37 +1,64 @@
-## Welcome to GitHub Pages
+from __future__ import print_function
+import random
 
-You can use the [editor on GitHub](https://github.com/Xavier0814/Python_Zork_Scott_Manning_Garapati/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+playerItems = []
+enteredRooms = []
+openedDoors = []
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+def startGame():
+    print('Welcome to the mysterious mansion')
+    raw_input('Press enter to start the game. ')
+    room1()
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Xavier0814/Python_Zork_Scott_Manning_Garapati/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+def room1():
+    global playerItems
+    global enteredRooms
+    global openedDoors
+    exitRoom = False
+    dresserItems = ['key1', 'flashlight']
+    print('You have entered the foyer')
+    print('There are two doors in this room.  One to the left(door 1) and one to the right(door2).')
+    print('There is also a dresser with one drawer in the room.')
+    userAction = raw_input('What would you like to do? ')
+    while exitRoom == False:
+        if userAction == 'open door 1' and 'key1' in playerItems:
+            print('The door slowly creaks open')
+            openedDoors += ['door1']
+            exitRoom = True
+        elif userAction == 'open door 2' and 'flashlight' in playerItems:
+            print('You open the door and can now see inside with the flashlight.')
+            openedDoors += ['door2']
+            exitRoom = True
+        elif userAction == 'open dresser':
+            print('You picked up', dresserItems)
+            playerItems += dresserItems
+            dresserItems = []
+            userAction = raw_input('What would you like to do now? ')
+        elif userAction == 'open door 1' and 'key1' not in playerItems:
+            print('The door will not open')
+            userAction = raw_input('What would you like to do now? ')
+        elif userAction == 'open door 2' and 'flashlight' not in playerItems:
+            print('You open the door, but it is so dark inside that you cannot see.  You do not enter and you close the door.')
+            userAction = raw_input('What would you like to do now? ')
+        else:
+            userAction = raw_input('Not a valid action.  Try Again! ')
+    if 'door1' in openedDoors:
+        room2()
+    else:
+        room3()
+        
+def room2():
+    global enteredRooms
+    print('You entered Room 2')
+    if 'room2' in enteredRooms:
+        print('This room looks vaguely familiar')
+    if 'room2' not in enteredRooms:
+        enteredRooms += ['room2']
+        
+def room3():
+    global enteredRooms
+    print('You entered Room 3')
+    if 'room3' in enteredRooms:
+        print('This room looks vaguely familiar')
+    if 'room3' not in enteredRooms:
+            enteredRooms += ['room3']

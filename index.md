@@ -6,27 +6,27 @@ enteredRooms = []
 openedDoors = []
 
 def startGame():
-    print('Welcome to the mysterious mansion')
+    print('Welcome to the Port-a-potty')
     raw_input('Press enter to start the game. ')
-    room1()
+    lobby()
 
-def room1():
+def lobby():
     global playerItems
     global enteredRooms
     global openedDoors
     exitRoom = False
-    dresserItems = ['key1', 'flashlight']
-    print('You have entered the foyer')
-    print('There are two doors in this room.  One to the left(door 1) and one to the right(door2).')
-    print('There is also a dresser with one drawer in the room.')
+    Bank_Items_Manager = ['$2000 in money']
+    print('You have entered the lobby.')
+    print('There are two doors in this lobby.  One to the north(vault) and one to the right(offices).')
+    print('There is also a bank teller with one drawer that has money in the room.')
     userAction = raw_input('What would you like to do? ')
     while exitRoom == False:
-        if userAction == 'open door 1' and 'key1' in playerItems:
-            print('The door slowly creaks open')
-            openedDoors += ['door1']
+        if userAction == 'open office doors' and 'Vault code' in playerItems:
+            print('You have entered the offices')
+            openedDoors += ['offices']
             exitRoom = True
-        elif userAction == 'open door 2' and 'flashlight' in playerItems:
-            print('You open the door and can now see inside with the flashlight.')
+        elif userAction == 'open vault'
+            print('You cannot open the vault door without the vault code. Go to the offices to retrieve the code.')
             openedDoors += ['door2']
             exitRoom = True
         elif userAction == 'open dresser':
@@ -34,7 +34,7 @@ def room1():
             playerItems += dresserItems
             dresserItems = []
             userAction = raw_input('What would you like to do now? ')
-        elif userAction == 'open door 1' and 'key1' not in playerItems:
+        elif userAction == 'open door 2' and 'key1' not in playerItems:
             print('The door will not open')
             userAction = raw_input('What would you like to do now? ')
         elif userAction == 'open door 2' and 'flashlight' not in playerItems:

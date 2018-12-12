@@ -31,21 +31,15 @@ def lobby():
             exitRoom = True
         elif userAction == 'open dresser':
             print('You picked up', dresserItems)
+            money =  money + 2000
             playerItems += dresserItems
             dresserItems = []
             userAction = raw_input('What would you like to do now? ')
         elif userAction == 'open vault' and 'vault code' not in playerItems:
             print('The vault will not open')
             userAction = raw_input('What would you like to do now? ')
-        elif userAction == 'open door 2' and 'flashlight' not in playerItems:
-            print('You open the door, but it is so dark inside that you cannot see.  You do not enter and you close the door.')
-            userAction = raw_input('What would you like to do now? ')
-        else:
-            userAction = raw_input('Not a valid action.  Try Again! ')
-    if 'door1' in openedDoors:
-        room2()
-    else:
-        room3()
+       
+    
         
 def room2():
     global enteredRooms

@@ -21,12 +21,12 @@ def lobby():
     print('There is also a bank teller with one drawer that has money in the room.')
     userAction = raw_input('What would you like to do? ')
     while exitRoom == False:
-        if userAction == 'open office doors' and 'Vault code' in playerItems:
+        if userAction == 'open office doors' and 'vault code' in playerItems:
             print('You have entered the offices')
             openedDoors += ['offices']
             exitRoom = True
-        elif userAction == 'open vault'
-            print('You cannot open the vault door without the vault code. Go to the offices to retrieve the code.')
+        elif userAction == 'open vault' and 'vault code' in playerItems:
+            print('You have now entered the vault, what would you like to do?')
             openedDoors += ['door2']
             exitRoom = True
         elif userAction == 'open dresser':
@@ -34,8 +34,8 @@ def lobby():
             playerItems += dresserItems
             dresserItems = []
             userAction = raw_input('What would you like to do now? ')
-        elif userAction == 'open door 2' and 'key1' not in playerItems:
-            print('The door will not open')
+        elif userAction == 'open vault' and 'vault code' not in playerItems:
+            print('The vault will not open')
             userAction = raw_input('What would you like to do now? ')
         elif userAction == 'open door 2' and 'flashlight' not in playerItems:
             print('You open the door, but it is so dark inside that you cannot see.  You do not enter and you close the door.')
